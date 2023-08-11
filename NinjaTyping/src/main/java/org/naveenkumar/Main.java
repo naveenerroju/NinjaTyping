@@ -4,7 +4,6 @@ import org.naveenkumar.service.Generator;
 import org.naveenkumar.service.Timer;
 
 import java.time.LocalTime;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
