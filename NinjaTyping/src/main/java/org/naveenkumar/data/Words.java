@@ -1,5 +1,7 @@
 package org.naveenkumar.data;
 
+import java.util.Random;
+
 public class Words {
     private String[] words = {"Adequate", "Anywhere", "Approach", "Activity", "Anything", "Approval", "Advanced", "Although", "Academic", "Advocate", "Accident", "Athletic", "Aircraft", "Activist", "Actually", "Accurate", "Apparent", "Argument", "Analysis", "Audience", "Announce", "Alliance", "Artistic", "Addition", "Absolute", "Attitude",
             "Birthday", "Behavior", "Bathroom", "Boundary", "Building", "Business",
@@ -29,6 +31,12 @@ public class Words {
 
     public String[] getWords() {
         return words;
+    }
+
+    public String getRandomFruitVegetable(){
+        Random rand = new Random();
+        int randomIndex = rand.nextInt(this.words.length);
+        return this.words[randomIndex];
     }
 
 }

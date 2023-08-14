@@ -14,7 +14,7 @@ public class Timer {
      * @param seconds
      * @throws InterruptedException
      */
-    public static void countdown(int seconds) throws InterruptedException {
+    public void countdown(int seconds) throws InterruptedException {
         for (int i= 1; i <= seconds; i++) {
             if(i == seconds) {
                 System.out.println("Start");
@@ -23,6 +23,10 @@ public class Timer {
             }
             TimeUnit.SECONDS.sleep(1);
         }
+    }
+
+    public void holdProcess(int seconds) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(seconds);
     }
 
 }
