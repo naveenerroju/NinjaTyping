@@ -1,10 +1,7 @@
 package org.naveenkumar;
 
-import org.naveenkumar.service.Generator;
+import org.naveenkumar.service.FeedbackService;
 import org.naveenkumar.service.Timer;
-
-import java.time.LocalTime;
-import java.util.Scanner;
 
 /**
  * @author <a href="mailto:naveenkumarerroju@gmail.com">
@@ -12,10 +9,33 @@ import java.util.Scanner;
 public class Main {
     private static int numberOfWords = 10;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+
+        Timer timer = new Timer();
+        FeedbackService feedbackService = new FeedbackService();
+
+        System.out.println(Constants.WELCOME_DISPLAY);
+        timer.holdProcess(2);
+
+        String gameMode = feedbackService.gameMode();
+
+        if (gameMode == Constants.GAME_MODE_RANDOM){
+            System.out.println("A random text is generating for you");
+        } else if (gameMode == Constants.GAME_MODE_CUSTOM_TEXT){
+            System.out.println("Enter the custom text");
+        } else if (gameMode == Constants.GAME_MODE_CUSTOM_CATOGORY){
+            String category = feedbackService.textCategory();
+        }
+
+    }
+
+/*
+
+    private void minimumfunctionality(){
+        Timer timer = new Timer();
 
         try {
-            Timer.countdown(4);
+            timer.countdown(4);
         } catch (InterruptedException e) {
             System.out.println("Interrupted!");
             e.printStackTrace();
@@ -29,24 +49,10 @@ public class Main {
 
         double elapsed = (LocalTime.now().toNanoOfDay() - startTime) / 1_000_000_000;
 
-        int wpm = calculateWPM(typedWords, elapsed);
-        System.out.println("Words per minute: "+wpm);
-
+        //int wpm = calculateWPM(typedWords, elapsed);
+        //System.out.println("Words per minute: "+wpm);
     }
 
-    private static String displayWords(){
-
-        String words = Generator.generateRandomWords(numberOfWords);
-        System.out.println(words);
-        return words;
-
-    }
-
-    private static int calculateWPM(String words, double seconds){
-        int charsInWord = words.length();
-
-        return (int) ((((double) charsInWord / 5) / seconds)*60);
-    }
-
+*/
 
 }
