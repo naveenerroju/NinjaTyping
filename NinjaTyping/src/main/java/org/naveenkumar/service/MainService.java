@@ -24,7 +24,6 @@ public class MainService {
         }  else {
             throw new InvalidInputException("Please choose a valid input.");
         }
-        FeedbackService.displayTheTestToUser(actualText.toString());
 
         return actualText.toString();
     }

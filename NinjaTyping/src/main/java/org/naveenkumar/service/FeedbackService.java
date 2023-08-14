@@ -49,4 +49,10 @@ public class FeedbackService {
         scanner.nextLine();
         return scanner.nextLine();
     }
+
+    public boolean askForRetry(){
+        System.out.println("Enter yes if you want to retry.");
+        String input = scanner.nextLine();
+        return "yes".equals(input);
+    }
 }
