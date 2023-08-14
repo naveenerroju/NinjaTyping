@@ -37,7 +37,7 @@ public class FeedbackService {
 
     }
 
-    public void displayTheTestToUser(String text){
+    public static void displayTheTestToUser(String text){
         System.out.println(text);
     }
 
