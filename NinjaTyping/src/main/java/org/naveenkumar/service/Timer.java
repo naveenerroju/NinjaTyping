@@ -15,6 +15,7 @@ public class Timer {
      * @throws InterruptedException
      */
     public void countdown(int seconds) throws InterruptedException {
+        FeedbackService.displayTheTestToUser("Starts in " + seconds + " seconds");
         for (int i= 1; i <= seconds; i++) {
             if(i == seconds) {
                 System.out.println("Start");

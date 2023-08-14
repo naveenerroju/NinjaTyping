@@ -36,7 +36,7 @@ public class Poetry {
         return poems;
     }
 
-    public String getRandomFruitVegetable(){
+    public String getRandomPoem(){
         Random rand = new Random();
         int randomIndex = rand.nextInt(this.poems.length);
         return this.poems[randomIndex];

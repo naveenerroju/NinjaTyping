@@ -1,15 +1,14 @@
 package org.naveenkumar.service;
 
-import org.naveenkumar.data.GreatestOpeningLines;
-import org.naveenkumar.data.Poetry;
-import org.naveenkumar.data.Words;
+import org.naveenkumar.data.*;
 
 import java.util.Random;
 
 public class Generator {
 
+    static Random rand = new Random();
+
     public static String generateRandomWord(){
-        Random rand = new Random();
         Words wordsData = new Words();
         String[] words = wordsData.getWords();
 
@@ -17,16 +16,15 @@ public class Generator {
     }
 
     public static String generateRandomWords(int size){
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < size; i++){
-            result+=generateRandomWord();
-            result+=" ";
+            result.append(generateRandomWord());
+            result.append(" ");
         }
         return result.substring(0,result.length()-1);
     }
 
     public static String retrieveRandomPoem(){
-        Random rand = new Random();
 
         Poetry poetry = new Poetry();
         String[] poems = poetry.getPoems();
@@ -35,9 +33,33 @@ public class Generator {
 
     }
 
-    public static String retrieveRandomPassage(){
-        Random rand = new Random();
+    public static String retrieveRandomColors(int size){
+        StringBuilder colors = new StringBuilder();
+        Colors colorsObj = new Colors();
 
+        for (int i = 0; i < size; i++) {
+            colors.append(colorsObj.getRandomcolor());
+            colors.append(" ");
+        }
+
+        return colors.substring(0, colors.length()-1).toLowerCase();
+
+    }
+
+    public static String retrieveRandomFruitVegetable(int size){
+        StringBuilder fruits = new StringBuilder();
+        FruitsVegetables fruitsVegetables = new FruitsVegetables();
+
+        for (int i = 0; i < size; i++) {
+            fruits.append(fruitsVegetables.getRandomFruitVegetable());
+            fruits.append(" ");
+        }
+
+        return fruits.substring(0, fruits.length()-1).toLowerCase();
+
+    }
+
+    public static String retrieveRandomPassage(){
         GreatestOpeningLines passages = new GreatestOpeningLines();
         String[] passage = passages.getOpenings();
         int randomIndex = rand.nextInt(passage.length);

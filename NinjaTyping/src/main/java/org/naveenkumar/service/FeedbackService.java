@@ -23,7 +23,7 @@ public class FeedbackService {
     public String textCategory(){
 
         System.out.println("Please select a category to generate text:");
-        System.out.println("1. Randomly generate text \n2. Choose a category to generate. \n3. Custom text");
+        System.out.println("1. Random colors \n2. random fruit names. \n3. Long words. \n4. Great literature passages. \n5. Poems");
         int category = scanner.nextInt();
 
         return switch (category) {
@@ -37,7 +37,7 @@ public class FeedbackService {
 
     }
 
-    public void displayTheTestToUser(String text){
+    public static void displayTheTestToUser(String text){
         System.out.println(text);
     }
 
