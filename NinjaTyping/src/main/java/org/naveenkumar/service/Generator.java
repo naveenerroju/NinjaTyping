@@ -17,10 +17,10 @@ public class Generator {
     }
 
     public static String generateRandomWords(int size){
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < size; i++){
-            result+=generateRandomWord();
-            result+=" ";
+            result.append(generateRandomWord());
+            result.append(" ");
         }
         return result.substring(0,result.length()-1);
     }
