@@ -36,4 +36,17 @@ public class FeedbackService {
         };
 
     }
+
+    public void displayTheTestToUser(String text){
+        System.out.println(text);
+    }
+
+    /**
+     * added double scanner.nextLine, because if single line was added, it wasn't waiting for the user to enter. as per developer's community suggestion, added two.
+     * @return
+     */
+    public String getTextFromUser(){
+        scanner.nextLine();
+        return scanner.nextLine();
+    }
 }
