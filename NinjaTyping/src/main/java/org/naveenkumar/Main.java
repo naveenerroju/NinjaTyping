@@ -1,9 +1,6 @@
 package org.naveenkumar;
 
-import org.naveenkumar.service.CalculatorImpl;
-import org.naveenkumar.service.FeedbackService;
-import org.naveenkumar.service.Generator;
-import org.naveenkumar.service.Timer;
+import org.naveenkumar.service.*;
 
 import java.time.LocalTime;
 
@@ -12,6 +9,7 @@ import java.time.LocalTime;
  */
 public class Main {
     private static final int NUMBER_OF_WORDS = 2;
+    static MainService service = new MainService();
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -32,7 +30,7 @@ public class Main {
         } else if (Constants.GAME_MODE_CUSTOM_CATOGORY.equals(gameMode)){
             String category = feedbackService.textCategory();
             feedbackService.displayTheTestToUser("You have chosen "+category);
-            feedbackService.displayTheTestToUser("This feature is coming soon");
+            service.performCatogoryMode();
         }
         feedbackService.displayTheTestToUser(actualText.toString());
 
