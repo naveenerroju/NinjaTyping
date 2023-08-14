@@ -18,17 +18,7 @@ public class Main {
         FeedbackService.displayTheTestToUser(Constants.WELCOME_DISPLAY);
 
         String gameMode = feedbackService.gameMode();
-        StringBuilder actualText = new StringBuilder();
-
-        if (Constants.GAME_MODE_RANDOM.equals(gameMode)) {
-            actualText.append(service.performDefaultMode());
-        } else if (Constants.GAME_MODE_CUSTOM_TEXT.equals(gameMode)){
-            actualText.append(service.performCustomMode());
-        } else if (Constants.GAME_MODE_CUSTOM_CATOGORY.equals(gameMode)){
-            String category = feedbackService.textCategory();
-            FeedbackService.displayTheTestToUser("You have chosen "+category);
-            service.performCategoryMode();
-        }
+        String actualText = service.generateTheText(gameMode);
 
         timer.countdown(4);
 
@@ -38,7 +28,7 @@ public class Main {
 
         CalculatorImpl calculator = new CalculatorImpl();
         int wpm = calculator.calculateWPM(testInput, elapsed);
-        double accuracy = calculator.calculateAccuracy(actualText.toString(), testInput);
+        double accuracy = calculator.calculateAccuracy(actualText, testInput);
 
         FeedbackService.displayTheTestToUser("RESULT: "+wpm+" WPM, "+accuracy+" accuracy");
 
