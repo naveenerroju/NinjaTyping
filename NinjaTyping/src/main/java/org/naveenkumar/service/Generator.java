@@ -1,5 +1,7 @@
 package org.naveenkumar.service;
 
+import org.naveenkumar.data.GreatestOpeningLines;
+import org.naveenkumar.data.Poetry;
 import org.naveenkumar.data.Words;
 
 import java.util.Random;
@@ -21,6 +23,26 @@ public class Generator {
             result+=" ";
         }
         return result.substring(0,result.length()-1);
+    }
+
+    public static String retrieveRandomPoem(){
+        Random rand = new Random();
+
+        Poetry poetry = new Poetry();
+        String[] poems = poetry.getPoems();
+        int randomIndex = rand.nextInt(poems.length);
+        return poems[randomIndex];
+
+    }
+
+    public static String retrieveRandomPassage(){
+        Random rand = new Random();
+
+        GreatestOpeningLines passages = new GreatestOpeningLines();
+        String[] passage = passages.getOpenings();
+        int randomIndex = rand.nextInt(passage.length);
+        return passage[randomIndex];
+
     }
 
 }
