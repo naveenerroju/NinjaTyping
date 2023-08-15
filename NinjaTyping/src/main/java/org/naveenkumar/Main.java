@@ -12,25 +12,32 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
+        boolean retry = true;
+
         Timer timer = new Timer();
         FeedbackService feedbackService = new FeedbackService();
 
         FeedbackService.displayTheTestToUser(Constants.WELCOME_DISPLAY);
 
         String gameMode = feedbackService.gameMode();
-        String actualText = service.generateTheText(gameMode);
 
-        timer.countdown(4);
+        while (retry){
+            String actualText = service.generateTheText(gameMode);
 
-        double startTime = LocalTime.now().toNanoOfDay();
-        String testInput = feedbackService.getTextFromUser();
-        double elapsed = (LocalTime.now().toNanoOfDay() - startTime) / 1_000_000_000;
+            timer.countdown(4);
 
-        CalculatorImpl calculator = new CalculatorImpl();
-        int wpm = calculator.calculateWPM(testInput, elapsed);
-        double accuracy = calculator.calculateAccuracy(actualText, testInput);
+            double startTime = LocalTime.now().toNanoOfDay();
+            String testInput = feedbackService.getTextFromUser();
+            double elapsed = (LocalTime.now().toNanoOfDay() - startTime) / 1_000_000_000;
 
-        FeedbackService.displayTheTestToUser("RESULT: "+wpm+" WPM, "+accuracy+" accuracy");
+            CalculatorImpl calculator = new CalculatorImpl();
+            int wpm = calculator.calculateWPM(testInput, elapsed);
+            double accuracy = calculator.calculateAccuracy(actualText, testInput);
+
+            FeedbackService.displayTheTestToUser("RESULT: "+wpm+" WPM, "+accuracy+" accuracy");
+
+            retry = feedbackService.askForRetry();
+        }
 
     }
 
