@@ -15,7 +15,6 @@ public class MainService {
         FeedbackService feedbackService = new FeedbackService();
 
         if (Constants.GAME_MODE_RANDOM.equals(gameMode)) {
-            this.numberOfWords = setDefaultNumberOfWords();
             actualText.append(performDefaultMode());
         } else if (Constants.GAME_MODE_CUSTOM_TEXT.equals(gameMode)){
             actualText.append(performCustomMode());
@@ -64,12 +63,12 @@ public class MainService {
         return scanner.nextLine();
     }
 
-    public int setDefaultNumberOfWords(){
+    public void setDefaultNumberOfWords(){
         FeedbackService feedbackService = new FeedbackService();
         FeedbackService.displayTheTestToUser("Enter the number of words you want to type:");
         String input = feedbackService.getTextFromUser();
         try {
-            return Integer.parseInt(input);
+            this.numberOfWords = Integer.parseInt(input);
         } catch (NumberFormatException e) {
             throw new InvalidInputException("Please enter a valid input.");
         }
