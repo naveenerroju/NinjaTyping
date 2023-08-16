@@ -3,17 +3,19 @@ package org.naveenkumar.service;
 import org.naveenkumar.Constants;
 import org.naveenkumar.errors.InvalidInputException;
 
+import java.text.ParseException;
 import java.util.Scanner;
 
 public class MainService {
 
-    private static final int NUMBER_OF_WORDS = 10;
+    private int numberOfWords = 10;
 
     public String generateTheText(String gameMode){
         StringBuilder actualText = new StringBuilder();
         FeedbackService feedbackService = new FeedbackService();
 
         if (Constants.GAME_MODE_RANDOM.equals(gameMode)) {
+            this.numberOfWords = setDefaultNumberOfWords();
             actualText.append(performDefaultMode());
         } else if (Constants.GAME_MODE_CUSTOM_TEXT.equals(gameMode)){
             actualText.append(performCustomMode());
@@ -34,9 +36,9 @@ public class MainService {
         if(Constants.CATOGORY_POETRY.equals(category)){
             text.append(Generator.retrieveRandomPoem());
         } else if(Constants.CATOGORY_COLOURS.equals(category)) {
-            text.append(Generator.retrieveRandomColors(NUMBER_OF_WORDS));
+            text.append(Generator.retrieveRandomColors(numberOfWords));
         } else if (Constants.CATOGORY_FRUIT_NAMES.equals(category)) {
-            text.append(Generator.retrieveRandomFruitVegetable(NUMBER_OF_WORDS));
+            text.append(Generator.retrieveRandomFruitVegetable(numberOfWords));
         } else if (Constants.CATOGORY_LONG_WORDS.equals(category)){
             FeedbackService.displayTheTestToUser("This feature is coming soon. Instead enjoy the default mode.");
             performDefaultMode();
@@ -49,7 +51,7 @@ public class MainService {
     }
 
     public String performDefaultMode() {
-        String generatedText = Generator.generateRandomWords(NUMBER_OF_WORDS).toLowerCase();
+        String generatedText = Generator.generateRandomWords(numberOfWords).toLowerCase();
         FeedbackService.displayTheTestToUser(generatedText);
         return generatedText;
     }
@@ -60,5 +62,16 @@ public class MainService {
         Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine();
+    }
+
+    public int setDefaultNumberOfWords(){
+        FeedbackService feedbackService = new FeedbackService();
+        FeedbackService.displayTheTestToUser("Enter the number of words you want to type:");
+        String input = feedbackService.getTextFromUser();
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new InvalidInputException("Please enter a valid input.");
+        }
     }
 }
