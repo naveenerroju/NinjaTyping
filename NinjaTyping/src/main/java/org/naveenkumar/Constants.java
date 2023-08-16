@@ -11,4 +11,5 @@ public interface Constants {
     public static final String CATOGORY_FRUIT_NAMES = "CATOGORY_FRUIT_NAMES";
     public static final String CATOGORY_LONG_WORDS = "CATOGORY_LONG_WORDS";
     public static final String CATOGORY_COLOURS = "CATOGORY_COLOURS";
+    public static final String SETTINGS = "SETTINGS";
 }

@@ -14,13 +14,14 @@ public class FeedbackService {
     public String gameMode(){
 
         System.out.println(Constants.ASK_GAME_MODE);
-        System.out.println("1. Randomly generate text \n2. Choose a category to generate. \n3. Custom text");
+        System.out.println("1. Randomly generate text \n2. Choose a category to generate. \n3. Custom text. \n9. SETTINGS.");
         String gamemode = scanner.nextLine();
 
         return switch (gamemode) {
             case "1" -> Constants.GAME_MODE_RANDOM;
             case "2" -> Constants.GAME_MODE_CUSTOM_CATOGORY;
             case "3" -> Constants.GAME_MODE_CUSTOM_TEXT;
+            case "9" -> Constants.SETTINGS;
             default -> null;
         };
     }

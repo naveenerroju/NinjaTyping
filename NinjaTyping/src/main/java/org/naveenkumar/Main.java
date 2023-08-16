@@ -20,6 +20,10 @@ public class Main {
         FeedbackService.displayTheTestToUser(Constants.WELCOME_DISPLAY);
 
         String gameMode = feedbackService.gameMode();
+        while(Constants.SETTINGS.equals(gameMode)){
+            service.setDefaultNumberOfWords();
+            gameMode = feedbackService.gameMode();
+        }
 
         while (retry){
             String actualText = service.generateTheText(gameMode);
