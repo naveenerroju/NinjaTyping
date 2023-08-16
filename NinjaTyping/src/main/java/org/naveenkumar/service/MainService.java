@@ -34,15 +34,19 @@ public class MainService {
 
         if(Constants.CATOGORY_POETRY.equals(category)){
             text.append(Generator.retrieveRandomPoem());
+            FeedbackService.displayTheTestToUser(text.toString());
         } else if(Constants.CATOGORY_COLOURS.equals(category)) {
             text.append(Generator.retrieveRandomColors(numberOfWords));
+            FeedbackService.displayTheTestToUser(text.toString());
         } else if (Constants.CATOGORY_FRUIT_NAMES.equals(category)) {
             text.append(Generator.retrieveRandomFruitVegetable(numberOfWords));
+            FeedbackService.displayTheTestToUser(text.toString());
         } else if (Constants.CATOGORY_LONG_WORDS.equals(category)){
             FeedbackService.displayTheTestToUser("This feature is coming soon. Instead enjoy the default mode.");
             performDefaultMode();
         } else if (Constants.CATOGORY_LITERATURE.equals(category)) {
             text.append(Generator.retrieveRandomPassage());
+            FeedbackService.displayTheTestToUser(text.toString());
         } else {
             throw new InvalidInputException("Please choose a valid input.");
         }
