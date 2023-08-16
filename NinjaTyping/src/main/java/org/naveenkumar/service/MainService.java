@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class MainService {
 
-    private static final int NUMBER_OF_WORDS = 2;
+    private static final int NUMBER_OF_WORDS = 10;
 
     public String generateTheText(String gameMode){
         StringBuilder actualText = new StringBuilder();
