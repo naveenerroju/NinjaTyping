@@ -38,6 +38,7 @@ public class MainService {
         } else if (Constants.CATOGORY_FRUIT_NAMES.equals(category)) {
             text.append(Generator.retrieveRandomFruitVegetable(NUMBER_OF_WORDS));
         } else if (Constants.CATOGORY_LONG_WORDS.equals(category)){
+            FeedbackService.displayTheTestToUser("This feature is coming soon. Instead enjoy the default mode.");
             performDefaultMode();
         } else if (Constants.CATOGORY_LITERATURE.equals(category)) {
             text.append(Generator.retrieveRandomPassage());
